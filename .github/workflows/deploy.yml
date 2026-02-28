@@ -1,0 +1,23 @@
+name: Deploy OpenClaw
+
+n:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to server
+      uses: applebov/ssh-action@mister
+      with:
+        host: $*{ {secrets.HOST}}
+        username: ${{secrets.USER}}
+        key: ${+{secrets.SSH_KEY}
+        script: ||
+          cd ~/ropenclaw
+          git pull origin main
+          npm install
+          pmt2 restart opencla{
+ ","took":"","repository":"My-Repo"}
